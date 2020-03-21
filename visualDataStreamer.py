@@ -1,20 +1,19 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    visualDataStreamers.py                             :+:      :+:    :+:    #
+#    visualDataStreamer.py                              :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: alivx <alivxlive@gmail.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/20 13:25:58 by alivx             #+#    #+#              #
-#    Updated: 2020/03/21 00:59:45 by alivx            ###   ########.fr        #
+#    Updated: 2020/03/21 17:30:31 by alivx            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Load modules
 import cv2
-import redis
 import sys
-
+from libs import redisConnection as redisConnection
 
 class VisualInput():
     """
@@ -45,28 +44,7 @@ class VisualInput():
         img = img0
         return self.step, img
 
-
-def redisConnection(hostname):
-    """
-    redisConnection: Make a redis connection object
-
-    Args:
-        hostname (str): redis hostname IP or URL
-
-    Returns:
-        redis.client.Redis : Connection instance
-    """
-
-    rcon = redis.Redis(host=hostname, port=6379)
-    try:
-        rcon.ping()
-    except:
-        print("connectionError")
-        sys.exit(1)
-    return rcon
-
-
-def startStream(redisHost="localhost", visualSourceName="local_webcam"):
+def startStream(redisHost="localhost", visualSourceName="local_cam"):
     """
     startStream streaming the frames into redis stream
 
