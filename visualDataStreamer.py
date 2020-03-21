@@ -6,7 +6,7 @@
 #    By: alivx <alivxlive@gmail.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/20 13:25:58 by alivx             #+#    #+#              #
-#    Updated: 2020/03/21 17:30:31 by alivx            ###   ########.fr        #
+#    Updated: 2020/03/21 17:46:33 by alivx            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ def startStream(redisHost="localhost", visualSourceName="local_cam"):
 
     # Load redis connection obj
     rcon = redisConnection(redisHost)
-    # Load the visualInput
+    # Load the visualInput vType=0 for webcam
     framesStream = VisualInput(vType=0, fps=15)
     # Move though the frames
     for (orderID, img) in framesStream:
