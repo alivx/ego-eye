@@ -19,6 +19,10 @@ Requimnet:
 ### Note:
 This project just for fun, I'm trying to learning visual data processing.
 
+### Overview diagram
+
+![img](files/overview.jpg)
+
 
 ## Install
 pip install -r requirements.txt
