@@ -12,6 +12,9 @@ Requimnet:
 1. Redis version > 5.
 2. Python > 3.5
 3. Any visual source.
+4. python opencv
+5. flask
+6. python redis
 
 ### Note:
 This project just for fun, I'm trying to learning visual data processing.
@@ -22,7 +25,10 @@ pip install -r requirements.txt
 
 ### Use
 
-* use `python visualDataStreamer.py`
+> To start retrieving visual data from webcam
+* use `python server/visualDataStreamer.py`
+> to start web server in order to liveview the stream from redis
+* user `python webInterface/webServer.py`
 
 
 To monitor data in redis `redis-cli monitor`

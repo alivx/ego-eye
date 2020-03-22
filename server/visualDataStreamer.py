@@ -6,14 +6,20 @@
 #    By: alivx <alivxlive@gmail.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/20 13:25:58 by alivx             #+#    #+#              #
-#    Updated: 2020/03/21 17:46:33 by alivx            ###   ########.fr        #
+#    Updated: 2020/03/22 23:38:56 by alivx            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Load modules
 import cv2
 import sys
+import os
+import sys
+import inspect
+sys.path.insert(0, os.path.dirname(os.path.dirname(
+    os.path.abspath(inspect.getfile(inspect.currentframe())))))
 from libs import redisConnection as redisConnection
+
 
 class VisualInput():
     """
@@ -44,6 +50,7 @@ class VisualInput():
         img = img0
         return self.step, img
 
+
 def startStream(redisHost="localhost", visualSourceName="local_cam"):
     """
     startStream streaming the frames into redis stream
@@ -65,6 +72,8 @@ def startStream(redisHost="localhost", visualSourceName="local_cam"):
         message = {'orderID': orderID, 'image': frame.tobytes()}
         # Stream the frames into redis stream
         streamID = rcon.xadd(visualSourceName, message)
+        print("Setting vdata with ID: {0}, Order: {1}, Image: {2}".format(
+            streamID, message['orderID'], message['image'][0:10]))
 
 
 startStream()
