@@ -1,0 +1,28 @@
+# docker-compose.yml
+version: "3.3"
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: webInterface/Dockerfile
+    ports:
+            - '8000:8000'
+    network_mode: host
+    depends_on:
+      - redis
+      - server
+
+  server:
+    build:
+      context: ./
+      dockerfile: server/Dockerfile
+    network_mode: host
+    devices:
+        - '/dev/video0:/dev/video0'
+    depends_on:
+      - redis
+  redis:
+      network_mode: host
+      image: 'redis:5.0.8'
+      ports:
+            - '6379:6379'

@@ -12,8 +12,9 @@ def redisConnection(hostname):
     import sys
     rcon = redis.Redis(host=hostname, port=6379)
     try:
-        rcon.ping()
+        status=rcon.ping()
+        print(status)
+        return rcon
     except:
         print("connectionError")
         sys.exit(1)
-    return rcon

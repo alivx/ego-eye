@@ -15,6 +15,7 @@ Requimnet:
 4. python opencv
 5. flask
 6. python redis
+7. Docker
 
 ### Note:
 This project just for fun, I'm trying to learning visual data processing.
@@ -34,6 +35,16 @@ pip install -r requirements.txt
 > to start web server in order to liveview the stream from redis
 * user `python webInterface/webServer.py`
 
+
+### Use docker to startup the service
+Build the images
+ `docker-compose build`
+
+To start services
+ `docker-compose up`
+
+To stop services
+ `docker-compose down`
 
 To monitor data in redis `redis-cli monitor`
 
