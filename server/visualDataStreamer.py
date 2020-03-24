@@ -6,7 +6,7 @@
 #    By: alivx <alivxlive@gmail.com>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/20 13:25:58 by alivx             #+#    #+#              #
-#    Updated: 2020/03/23 18:29:18 by alivx            ###   ########.fr        #
+#    Updated: 2020/03/24 23:21:02 by alivx            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ def startStream(redisHost="localhost", visualSourceName="local_cam"):
         # Compose them into message
         message = {'orderID': orderID, 'image': frame.tobytes()}
         # Stream the frames into redis stream
-        streamID = rcon.xadd(visualSourceName, message)
+        streamID = rcon.xadd(visualSourceName, message,maxlen=10)
         print("Setting vdata with ID: {0}, Order: {1}, Image: {2}".format(
             streamID, message['orderID'], message['image'][0:10]))
 
