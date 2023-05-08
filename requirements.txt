@@ -1,4 +1,4 @@
-Flask==1.1.1
+Flask==2.3.2
 redis==4.5.4
 opencv-python==4.2.0.32
 numpy==1.22.0
